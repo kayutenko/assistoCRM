@@ -1,0 +1,89 @@
+{% extends "ocrm/lead_list.html"%}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb "lead details" "ocrm:lead_detail" lead_id %}
+{% endblock %}
+
+{% block title %}
+{{lead.first_name}} {{lead.second_name}}
+{% endblock title %}
+
+{% block top-actions-row %}
+
+    <div class="btn-group" role="group" aria-label="Convert to contact">
+        <a href="{% url 'ocrm:convert_lead_to_contact' contact.id %}" class="btn btn-primary">Convert to contact</a>
+    </div>
+    <div class="btn-group" role="group" aria-label="Send communication">
+        <button class="btn btn-outline-secondary" type="button">Send SMS</button>
+        <button class="btn btn-outline-secondary" type="button">Send E-Mail</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Edit">
+        <button class="btn btn-outline-primary" type="button">Edit</button>
+    </div>
+
+{% endblock top-actions-row %}
+
+{% block data-row %}
+
+<style>
+    #data-row {
+        background-color: #fafafa;
+    }
+</style>
+
+<div class="row g-2">
+    <div class="col-xl-3 col-lg-4">
+        <div class="card p-3 h-100">
+            <h4 class="card-title mb-4">Basic lead information</h4>
+            <div class="card-image-top my-4">
+                <img src="{{contact.image_url}}" class="rounded-circle m-auto mb-1 d-block" style="width: 200px; height:200px;">
+            </div>
+            <div class="card-body">
+                <div><b>First name:</b> {{contact.first_name}}</div>
+                <div><b>Second name:</b> {{contact.second_name}}</div>
+                <div><b>Age:</b> {{contact.age}}</div>
+                <div><b>Gender:</b> {{contact.gender}}</div>
+                <div><b>E-Mail:</b> {{contact.email}}</div>
+                <div><b>Phone number:</b> {{contact.phone_number}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="interactions" class="col-xl col-lg">
+
+        <div class="card p-3 h-100">
+            <h4 class="mb-4">Latest interactions</h4>
+            <ul class="list-group">
+            {% for interaction in interactions %}
+                <li class="list-group-item imaged-list">
+                    <div class="me-3 rounded-image-container">
+                        <img class="rounded-image" src="{{interaction.channel.image_url}}" alt="" width="30" height="30">
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="detail-list-toprow">
+                            <div><b>{{interaction.channel.name}}</b></div>
+                            <div><small>{{interaction.date}}</small></div>
+                        </div>
+                        <div><small><b>Offered product: </b>{{interaction.offered_product}}</small></div>
+                        <div><small>Response: {{interaction.response}}</small></div>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $('#sidebar li a.nav-link.active').removeClass('active').addClass('link-dark');
+    $('#sidebar li a.nav-link:contains("Leads")').removeClass('link-dark').addClass('active');
+    console.log('clicked');
+
+</script>
+
+{% endblock data-row %}
+

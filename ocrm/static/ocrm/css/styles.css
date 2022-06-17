@@ -1,0 +1,142 @@
+html, body {
+    height: 100%;
+}
+
+body {
+
+    background-color: #efefef;
+    /*background-image: url(https://www.assistoconsulting.com/wp-content/uploads/2022/03/background_07_03_02.png);*/
+    /*background-size: 100%;*/
+    /*background-repeat-y: no-repeat;*/
+}
+
+.card {
+    border: 1px solid rgb(44 101 185 / 16%);
+    border-radius: 0.55rem;
+    box-shadow: 0px 0px 11px 0px #e6e1e1;
+}
+
+#app-body {
+    display: flex;
+    height: 100%;
+}
+
+#main_viewport {
+    height: 100%;
+    /*margin-top: 40px;*/
+}
+
+#navbar nav {
+    box-shadow: 0px 1px 7px #7498cd;
+}
+
+#navbar a {
+    color: white;
+    text-decoration: none;
+    padding-left: 12px;
+}
+
+#sidebar-container {
+    height: 100%;
+    box-shadow: 3px 0 9px #e7e7e7;
+}
+
+#sidebar {
+    width: auto;
+    height: 100%;
+    padding: 50px 36px 10px 8px;
+}
+
+#content {
+    background-color: white;
+    padding-left: 190px;
+}
+
+@media (max-width: 992px) {
+    #content {
+        background-color: white;
+        padding-left: 70px;
+    }
+
+    .sidebar-item-text {
+        display: none;
+    }
+
+    #sidebar {
+        padding-right: 0;
+    }
+}
+
+#content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 20px;
+    padding: 60px 10px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#top-actions-row {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+    align-items: baseline;
+}
+
+.detail-row {
+    background-color: #fafafa;
+}
+
+#contacts-list tbody {
+    cursor: pointer;
+}
+
+#sidebar i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.detail-list-toprow {
+    display: flex;
+    gap: 10px;
+}
+
+.detail-list-bottomrow {
+    display: flex;
+    flex-direction: column;
+}
+
+.imaged-list {
+    display: flex;
+    align-items: center;
+}
+
+.rounded-image-container {
+    background-color: hsl(216deg 100% 98%);
+    display: flex;
+    align-content: space-around;
+    align-items: center;
+    justify-content: center;
+    /*border: 2px solid #e3ebf7;*/
+    border-radius: 50%!important;
+}
+
+.rounded-image {
+    filter: invert(29%) sepia(62%) saturate(3110%) hue-rotate(209deg) brightness(99%) contrast(104%);
+}
+
+.creation-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.h-100 {
+    height: 100%;
+}

@@ -1,0 +1,71 @@
+{% extends "ocrm/content.html"%}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "ocrm:index" %}
+  {% breadcrumb "Products" "ocrm:products" %}
+{% endblock %}
+
+{% block title %}
+  Products
+{% endblock title %}
+
+{% block top-actions-row %}
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search products" aria-label="Search" aria-describedby="search">
+  <button type="button" class="btn btn-outline-primary" id="search">Search</button>
+</div>
+
+<div class="btn-group" role="group" aria-label="Create contact">
+  <a class="btn btn-primary" href="{% url 'ocrm:create_contact'%}" type="button">Create product</a>
+</div>
+
+{% endblock top-actions-row %}
+
+{% block data-row %}
+  <div class="table-responsive-lg p-4">
+    <table id="product-list" class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Max tenor</th>
+        <th scope="col">Max limit</th>
+        <th scope="col">Min price</th>
+        <th scope="col">Base price</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      {% for product in product_list %}
+        <tr>
+          <td>
+            <img class="rounded-image" src="{{product.image_url}}" alt="" width="30" height="30">
+          </td>
+          <th scope="row">{{product.id}}</th>
+          <td onclick='openItem({{product.id}})'>{{product.name}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.max_tenor}}</td>
+          <td>{{product.max_limit}}</td>
+          <td>{{product.min_price}}</td>
+          <td>{{product.base_price}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function openItem(product_id) {
+      window.location =  'edit_product/' + product_id;
+    }
+  </script>
+  <script>
+
+    $('#sidebar li a.nav-link.active').removeClass('active').addClass('link-dark');
+    $('#sidebar li a.nav-link:contains("Products")').removeClass('link-dark').addClass('active');
+
+  </script>
+{% endblock data-row %}

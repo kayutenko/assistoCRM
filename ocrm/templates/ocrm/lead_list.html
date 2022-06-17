@@ -1,0 +1,66 @@
+{% extends "ocrm/content.html"%}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "ocrm:index" %}
+  {% breadcrumb "Leads" "ocrm:leads" %}
+{% endblock %}
+
+{% block title %}
+  Leads
+{% endblock title %}
+
+{% block top-actions-row %}
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search leads" aria-label="Search" aria-describedby="search">
+  <button type="button" class="btn btn-outline-primary" id="search">Search</button>
+</div>
+
+<div class="btn-group" role="group" aria-label="Create lead">
+  <a class="btn btn-primary" href="{% url 'ocrm:create_lead'%}" type="button">Create lead</a>
+</div>
+
+{% endblock top-actions-row %}
+
+{% block data-row %}
+  <div class="table-responsive-lg p-4">
+    <table id="lead-list" class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">E-Mail</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for lead in lead_list %}
+        <tr>
+          <th scope="row">{{lead.id}}</th>
+          <td onclick='openItem({{lead.id}})'>{{lead.first_name}}</td>
+          <td>{{lead.second_name}}</td>
+          <td>{{lead.age}}</td>
+          <td>{{lead.gender}}</td>
+          <td>{{lead.email}}</td>
+          <td>{{lead.phone_number}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function openItem(lead_id) {
+      window.location =  lead_id;
+    }
+  </script>
+  <script>
+
+    $('#sidebar li a.nav-link.active').removeClass('active').addClass('link-dark');
+    $('#sidebar li a.nav-link:contains("Leads")').removeClass('link-dark').addClass('active');
+
+  </script>
+{% endblock data-row %}

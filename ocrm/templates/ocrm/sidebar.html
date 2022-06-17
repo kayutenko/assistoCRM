@@ -1,0 +1,83 @@
+<div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light">
+  <div>
+  <ul class="nav flex-column mb-auto">
+
+    <li class="nav-item">
+      <a href="{% url 'ocrm:index' %}" class="nav-link active" aria-current="page">
+        <i class="bi-house-door"></i>
+        <span class="sidebar-item-text">Home</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'ocrm:leads'%}" class="nav-link link-dark">
+        <i class="bi-person-plus"></i>
+        <span class="sidebar-item-text">Leads</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'ocrm:contacts'%}" class="nav-link link-dark">
+        <i class="bi-person-check"></i>
+        <span class="sidebar-item-text">Contacts</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <i class="bi-briefcase"></i>
+        <span class="sidebar-item-text">Accounts</span>
+      </a>
+    </li>
+
+
+  </ul>
+  <hr>
+  <ul class="nav flex-column mb-auto">
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <i class="bi-speedometer2"></i>
+        <span class="sidebar-item-text">Reports</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <i class="bi-list-task"></i>
+        <span class="sidebar-item-text">Tasks</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'ocrm:products' %}" class="nav-link link-dark">
+        <i class="bi-credit-card-2-front"></i>
+        <span class="sidebar-item-text">Products</span>
+      </a>
+    </li>
+  </ul>
+  </div>
+  <hr>
+  <div class="dropdown mx-auto">
+    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://st2.depositphotos.com/9998432/48284/v/450/depositphotos_482842440-stock-illustration-default-avatar-photo-placeholder-grey.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong><span class="sidebar-item-text">User</span></strong>
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<script>
+  // $('#collapse').click(function () {
+  //     $('span.sidebar-item-text').collapse('toggle')
+  //
+  // });
+
+</script>
+

@@ -1,0 +1,47 @@
+{% extends "ocrm/contact_list.html"%}
+{% load crispy_forms_tags %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  {% breadcrumb "Create contact" "ocrm:create_contact" %}
+{% endblock %}
+
+{% block title %}
+  Create contact
+{% endblock title %}
+
+{% block top-actions-row %}
+{% endblock top-actions-row %}
+
+{% block data-row %}
+
+<style>
+  #data-row {
+    background-color: #fafafa;
+  }
+</style>
+
+<div class="card mx-auto my-2" style="max-width: 800px;">
+  <div class="card-body p-5">
+    <form action="{% url 'ocrm:create_contact' %}" method="post" class="creation-form">
+      {% csrf_token %}
+      <h4>Fill in the form to create a new contact</h4>
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-primary mt-3">Create contact</button>
+      <a href="{% url 'ocrm:contacts'%}" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+  </div>
+</div>
+
+<script>
+
+  $('#sidebar li a.nav-link.active').removeClass('active').addClass('link-dark');
+  $('#sidebar li a.nav-link:contains("Contacts")').removeClass('link-dark').addClass('active');
+  console.log('clicked');
+
+</script>
+
+{% endblock data-row %}
+

@@ -1,0 +1,30 @@
+{% extends "ocrm/content.html"%}
+{% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+    {% clear_breadcrumbs %}
+{% endblock %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block top-actions-row %}
+
+{% endblock top-actions-row %}
+
+{% block data-row %}
+    <style>
+        .assisto-bg {
+            background-image: url("{% static 'ocrm/img/assisto_background.png' %}");
+            height: 550px;
+            background-position: right -200px;
+        }
+    </style>
+
+    <div class="card-body assisto-bg">
+        <h3 class="card-title">Welcome to Assisto Consulting oCRM mockup!</h3>
+        <p class="card-text">This application is created for demonstration purposes only. </p>
+    </div>
+{% endblock data-row %}

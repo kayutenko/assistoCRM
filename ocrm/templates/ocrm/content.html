@@ -1,0 +1,32 @@
+{% extends "ocrm/base.html"%}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block content %}
+
+    {% block breadcrumbs %}
+    {% endblock %}
+
+    <div id="content-container">
+        {% render_breadcrumbs "django_bootstrap_breadcrumbs/bootstrap4.html" %}
+        <div class="top-row">
+            <div class="content-title" id="content-title">
+                <h2>
+                    {% block title %}
+                        Some title
+                    {% endblock title %}
+                </h2>
+            </div>
+
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" id="top-actions-row">
+                {% block top-actions-row %}{% endblock top-actions-row %}
+            </div>
+        </div>
+
+        <div class="card" id="data-row">
+            <div class="card-body p-2">
+                {% block data-row %}{% endblock data-row %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

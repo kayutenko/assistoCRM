@@ -1,0 +1,67 @@
+{% extends "ocrm/content.html"%}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "ocrm:index" %}
+  {% breadcrumb "Contacts" "ocrm:contacts" %}
+{% endblock %}
+
+{% block title %}
+  Contacts
+{% endblock title %}
+
+{% block top-actions-row %}
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search contacts" aria-label="Search" aria-describedby="search">
+  <button type="button" class="btn btn-outline-primary" id="search">Search</button>
+</div>
+
+<div class="btn-group" role="group" aria-label="Create contact">
+  <a class="btn btn-primary" href="{% url 'ocrm:create_contact'%}" type="button">Create contact</a>
+</div>
+
+{% endblock top-actions-row %}
+
+{% block data-row %}
+  <div class="table-responsive-lg p-4">
+    <table id="contacts-list" class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">E-Mail</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for contact in contacts_list %}
+        <tr>
+          <th scope="row">{{contact.id}}</th>
+          <td onclick='openItem({{contact.id}})'>{{contact.first_name}}</td>
+          <td>{{contact.second_name}}</td>
+          <td>{{contact.age}}</td>
+          <td>{{contact.gender}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.phone_number}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function openItem(contact_id) {
+      window.location =  contact_id;
+    }
+  </script>
+  <script>
+
+    $('#sidebar li a.nav-link.active').removeClass('active').addClass('link-dark');
+    $('#sidebar li a.nav-link:contains("Contacts")').removeClass('link-dark').addClass('active');
+    console.log('clicked');
+
+  </script>
+{% endblock data-row %}
